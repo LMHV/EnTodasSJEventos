@@ -1,0 +1,22 @@
+{
+    "categories": {
+        "cat1": {
+            "categoryTitle": "Deportes",
+            "urlBackgroundImage": "banner_sports.jpeg"},
+        "cat2": {
+            "categoryTitle": "Gastronomia",
+            "urlBackgroundImage": "banner_gastronomy.jpeg"},
+        "cat3": {
+            "categoryTitle": "Educacional",
+            "urlBackgroundImage": "banner_educational.jpeg"},
+        "cat4": {
+            "categoryTitle": "Festival",
+            "urlBackgroundImage": "banner_festival.jpeg"},
+        "cat5": {
+            "categoryTitle": "Investigacion",
+            "urlBackgroundImage": "banner_research.jpeg"},
+        "cat6": {
+                "categoryTitle": "Teatro",
+                "urlBackgroundImage": "banner_theatre.jpeg"}
+        }
+}
