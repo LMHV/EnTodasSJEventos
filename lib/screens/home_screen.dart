@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:practicando_flutter/widgets/custom_category.dart';
 
@@ -8,42 +10,56 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 5,
+        flexibleSpace: ClipRect(
+            child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 20),
+          child: Container(
+            color: Colors.transparent,
+          ),
+        )),
+        elevation: 1,
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 47, 47, 47),
-        title: const Text("App Bar"),
+        backgroundColor: Colors.white.withAlpha(200),
+        title: const Text(
+          "EnTodas San Juan",
+          style: TextStyle(color: Color.fromARGB(255, 152, 152, 152)),
+        ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 40),
+        padding: const EdgeInsets.symmetric(vertical: 30),
         child: Center(
             child: Expanded(
-          child: Column(children: const [
-            Text("Categorias",
-                style: TextStyle(
-                  color: Color(0xFF343333),
-                  fontSize: 25,
-                )),
-            CustomCategory(
+          child: Column(children: [
+            Container(
+              alignment: Alignment.topLeft,
+              margin: const EdgeInsets.only(left: 50, bottom: 20),
+              child: const Text("CATEGORIAS",
+                  style: TextStyle(
+                    color: Color(0xFF343333),
+                    fontSize: 20,
+                  )),
+            ),
+            const CustomCategory(
               categoryTitle: "Deportes",
               urlBackgroundImage: 'banner_sports.jpeg',
             ),
-            CustomCategory(
-              categoryTitle: "Gastronomia",
+            const CustomCategory(
+              categoryTitle: "Gastronomía",
               urlBackgroundImage: 'banner_gastronomy.jpeg',
             ),
-            CustomCategory(
+            const CustomCategory(
               categoryTitle: "Educacional",
               urlBackgroundImage: 'banner_educational.jpeg',
             ),
-            CustomCategory(
+            const CustomCategory(
               categoryTitle: "Festival",
               urlBackgroundImage: 'banner_festival.jpeg',
             ),
-            CustomCategory(
-              categoryTitle: "Investigacion",
+            const CustomCategory(
+              categoryTitle: "Investigación",
               urlBackgroundImage: 'banner_research.jpeg',
             ),
-            CustomCategory(
+            const CustomCategory(
               categoryTitle: "Teatro",
               urlBackgroundImage: 'banner_theatre.jpeg',
             ),
