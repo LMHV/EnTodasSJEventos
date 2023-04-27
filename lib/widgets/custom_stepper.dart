@@ -19,8 +19,11 @@ class _CustomStepperState extends State<CustomStepper> {
   @override
   Widget build(BuildContext context) {
     return Stepper(
+      physics: const ClampingScrollPhysics(),
       steps: [
         Step(
+            state: _currentStep <= 0 ? StepState.editing : StepState.complete,
+            isActive: _currentStep >= 0,
             title: const Text('Nombre'),
             content: CustomTextField(
               width: 325,
@@ -28,6 +31,8 @@ class _CustomStepperState extends State<CustomStepper> {
               label: 'Ingresar nombre',
             )),
         Step(
+            state: _currentStep <= 1 ? StepState.editing : StepState.complete,
+            isActive: _currentStep >= 1,
             title: const Text('Apellido'),
             content: CustomTextField(
               width: 325,
@@ -35,6 +40,8 @@ class _CustomStepperState extends State<CustomStepper> {
               label: 'Ingresar apellido',
             )),
         Step(
+            state: _currentStep <= 2 ? StepState.editing : StepState.complete,
+            isActive: _currentStep >= 2,
             title: const Text('Email'),
             content: CustomTextField(
               width: 325,
@@ -42,6 +49,8 @@ class _CustomStepperState extends State<CustomStepper> {
               label: 'Ingresar email',
             )),
         Step(
+            state: _currentStep <= 3 ? StepState.editing : StepState.complete,
+            isActive: _currentStep >= 3,
             title: const Text('Contraseña'),
             content: CustomTextField(
               width: 325,
