@@ -3,6 +3,9 @@
         "cat1": {
             "categoryTitle": "Deportes",
             "urlBackgroundImage": "banner_sports.jpeg"},
+            "info": {
+
+            },
         "cat2": {
             "categoryTitle": "Gastronomia",
             "urlBackgroundImage": "banner_gastronomy.jpeg"},

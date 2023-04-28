@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practicando_flutter/screens/category_screen.dart';
 import 'package:practicando_flutter/widgets/custom_image_button.dart';
 
 class CustomCategory extends StatelessWidget {
@@ -59,7 +60,17 @@ class CustomCategory extends StatelessWidget {
                             fontWeight: FontWeight.w300,
                           )),
                     ),
-                    const CustomImageButton(urlImage: 'right_arrow_chevron.png')
+                    CustomImageButton(
+                      urlImage: 'right_arrow_chevron.png',
+                      callback: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                          builder: (context) {
+                            return const CategoryScreen(variable: "variable");
+                          },
+                        ), (route) => false);
+                      },
+                    )
                   ]))
         ]));
   }

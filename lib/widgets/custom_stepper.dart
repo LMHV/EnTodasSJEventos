@@ -50,7 +50,7 @@ class _CustomStepperState extends State<CustomStepper> {
           });
         }
       },
-      controlsBuilder: (context, details) {
+      /*controlsBuilder: (context, details) {
         final isLastStep = _currentStep == getSteps().length - 1;
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 20),
@@ -78,7 +78,7 @@ class _CustomStepperState extends State<CustomStepper> {
             ],
           ),
         );
-      },
+      },*/
     );
   }
 

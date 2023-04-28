@@ -13,7 +13,7 @@ class CustomImageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => callback,
+      onTap: callback,
       child: Container(
           padding: const EdgeInsets.all(7),
           width: 35,
