@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 class CustomImageButton extends StatelessWidget {
   final String urlImage;
-  //void Function function;
+  final VoidCallback? callback;
 
   const CustomImageButton({
     super.key,
     required this.urlImage,
-    //required this.function
+    this.callback,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {},
+      onTap: () => callback,
       child: Container(
           padding: const EdgeInsets.all(7),
           width: 35,

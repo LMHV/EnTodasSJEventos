@@ -5,7 +5,6 @@ class CustomTextField extends StatelessWidget {
   final double width;
   final String? label;
   final String? hint;
-  final Color? customColor;
 
   const CustomTextField({
     super.key,
@@ -13,7 +12,6 @@ class CustomTextField extends StatelessWidget {
     this.label,
     this.hint,
     required this.controller,
-    this.customColor,
   });
 
   @override
@@ -28,8 +26,7 @@ class CustomTextField extends StatelessWidget {
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             hintText: hint,
             label: Text(label ?? ''),
-            filled: true,
-            fillColor: customColor ?? const Color.fromARGB(255, 238, 238, 238),
+            filled: false,
             floatingLabelBehavior: FloatingLabelBehavior.never,
             border: const OutlineInputBorder(
                 borderSide: BorderSide.none,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practicando_flutter/widgets/custom_image_button.dart';
 
 import 'custom_textfield.dart';
 
@@ -16,11 +17,72 @@ class _CustomStepperState extends State<CustomStepper> {
   TextEditingController passwordController = TextEditingController();
 
   int _currentStep = 0;
+
+  continueStep() {
+    setState(() {
+      _currentStep++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stepper(
+      elevation: 3,
       physics: const ClampingScrollPhysics(),
-      steps: [
+      steps: getSteps(),
+      onStepTapped: (int newIndex) {
+        setState(() {
+          _currentStep = newIndex;
+        });
+      },
+      currentStep: _currentStep,
+      onStepContinue: () {
+        if (_currentStep != 3) {
+          setState(() {
+            _currentStep++;
+          });
+        }
+      },
+      onStepCancel: () {
+        if (_currentStep != 0) {
+          setState(() {
+            _currentStep--;
+          });
+        }
+      },
+      controlsBuilder: (context, details) {
+        final isLastStep = _currentStep == getSteps().length - 1;
+        return Container(
+          margin: const EdgeInsets.symmetric(vertical: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              _currentStep != 0
+                  ? CustomImageButton(
+                      urlImage: 'top_arrow_chevron.png',
+                      callback: () {
+                        continueStep;
+                      },
+                    )
+                  : const CustomImageButton(urlImage: 'top_arrow_chevron.png'),
+              isLastStep
+                  ? const CustomImageButton(urlImage: 'tick.png')
+                  : CustomImageButton(
+                      urlImage: 'down_arrow_chevron.png',
+                      callback: () {
+                        setState(() {
+                          _currentStep++;
+                        });
+                      },
+                    ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  List<Step> getSteps() => [
         Step(
             state: _currentStep <= 0 ? StepState.editing : StepState.complete,
             isActive: _currentStep >= 0,
@@ -57,27 +119,5 @@ class _CustomStepperState extends State<CustomStepper> {
               controller: passwordController,
               label: 'Ingresar contraseña',
             )),
-      ],
-      onStepTapped: (int newIndex) {
-        setState(() {
-          _currentStep = newIndex;
-        });
-      },
-      currentStep: _currentStep,
-      onStepContinue: () {
-        if (_currentStep != 3) {
-          setState(() {
-            _currentStep++;
-          });
-        }
-      },
-      onStepCancel: () {
-        if (_currentStep != 0) {
-          setState(() {
-            _currentStep--;
-          });
-        }
-      },
-    );
-  }
+      ];
 }
