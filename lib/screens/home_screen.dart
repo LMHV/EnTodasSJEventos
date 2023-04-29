@@ -1,9 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:practicando_flutter/widgets/custom_button.dart';
+import 'package:practicando_flutter/screens/signup_screen.dart';
 import 'package:practicando_flutter/widgets/custom_category.dart';
-import 'package:practicando_flutter/widgets/custom_stepper.dart';
+//import 'package:practicando_flutter/widgets/custom_button.dart';
+//import 'package:practicando_flutter/widgets/custom_stepper.dart';
+
+import '../widgets/custom_image_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,9 +25,30 @@ class HomeScreen extends StatelessWidget {
         elevation: 2,
         centerTitle: true,
         backgroundColor: Colors.white.withAlpha(200),
-        title: const Text(
-          "EnTodas SJ",
-          style: TextStyle(color: Color.fromARGB(255, 152, 152, 152)),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomImageButton(
+              urlImage: 'back.png',
+              backgroundButtonColor: const Color(0x00FFFFFF),
+              iconColor: const Color(0xFFDA637B),
+              callback: () {
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) {
+                  return const SignupScreen();
+                }), (route) => false);
+              },
+            ),
+            const Spacer(),
+            const Text(
+              "EnTodas SJ",
+              style: TextStyle(color: Color(0xFFDA637B)),
+            ),
+            const Spacer(),
+            const SizedBox(
+              width: 35,
+            )
+          ],
         ),
       ),
       body: SingleChildScrollView(
@@ -63,6 +87,10 @@ class HomeScreen extends StatelessWidget {
           const CustomCategory(
             categoryTitle: "Teatro",
             urlBackgroundImage: 'banner_theatre.jpeg',
+          ),
+          const CustomCategory(
+            categoryTitle: "Otros",
+            urlBackgroundImage: 'background1.jpeg',
           ),
         ])),
       ),
