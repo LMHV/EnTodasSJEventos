@@ -8,6 +8,7 @@ class CustomOutlinedButton extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? backgroundColor;
+  final Color? textColor;
 
   const CustomOutlinedButton({
     super.key,
@@ -18,6 +19,7 @@ class CustomOutlinedButton extends StatelessWidget {
     this.width,
     this.height,
     this.backgroundColor,
+    this.textColor,
   });
 
   @override
@@ -35,7 +37,9 @@ class CustomOutlinedButton extends StatelessWidget {
         children: [
           isIcon
               ? Image.asset(
-                  urlIcon != null ? '$urlIcon' : 'assets/icons/warning.png',
+                  urlIcon != null
+                      ? 'assets/icons/$urlIcon'
+                      : 'assets/icons/warning.png',
                   width: width ?? 20,
                   height: height ?? 20,
                 )
@@ -43,8 +47,8 @@ class CustomOutlinedButton extends StatelessWidget {
           const SizedBox(width: 5),
           Text(
             text,
-            style: const TextStyle(
-                color: Color.fromARGB(255, 20, 20, 20),
+            style: TextStyle(
+                color: textColor ?? const Color.fromARGB(255, 20, 20, 20),
                 fontWeight: FontWeight.bold),
           ),
         ],

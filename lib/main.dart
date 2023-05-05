@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:practicando_flutter/screens/category_screen.dart';
 import 'package:practicando_flutter/screens/home_screen.dart';
-//import 'package:practicando_flutter/screens/home_screen.dart';
+import 'package:practicando_flutter/screens/login_screen.dart';
 import 'package:practicando_flutter/screens/signup_screen.dart';
+//import 'package:practicando_flutter/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignupScreen(),
+      initialRoute: '/',
+      routes: {
+        "/": (context) => const HomeScreen(),
+        "/login": (context) => const LoginScreen(),
+        "/signup": (context) => const SignupScreen(),
+        "/category": (context) => CategoryScreen()
+      },
     );
   }
 }

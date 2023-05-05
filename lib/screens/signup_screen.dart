@@ -5,6 +5,7 @@ import 'package:practicando_flutter/screens/home_screen.dart';
 import 'package:practicando_flutter/screens/login_screen.dart';
 import 'package:practicando_flutter/widgets/custom_image_button.dart';
 import 'package:practicando_flutter/widgets/custom_outlined_button.dart';
+import 'package:practicando_flutter/widgets/custom_textformfield.dart';
 
 //import 'package:practicando_flutter/widgets/custom_stepper.dart';
 //import 'package:practicando_flutter/widgets/custom_textfield.dart';
@@ -66,14 +67,9 @@ class SignupScreen extends StatelessWidget {
                               child: Text(
                                 'Registrate',
                                 style: TextStyle(
-                                  fontSize: 25,
-                                  color: Color(0xFFDA637B),
-                                  /*fontWeight: FontWeight.bold,
-                                    foreground: Paint()
-                                      ..style = PaintingStyle.stroke
-                                      ..strokeWidth = 1
-                                      ..color = Colors.black)*/
-                                ),
+                                    fontSize: 25,
+                                    color: Color(0xFFFFFFFF),
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                             Align(
@@ -82,7 +78,7 @@ class SignupScreen extends StatelessWidget {
                                 "Crea tu cuenta EnTodas SJ",
                                 style: TextStyle(
                                     fontSize: 15,
-                                    color: Color.fromARGB(255, 100, 100, 100),
+                                    color: Color.fromARGB(255, 57, 57, 57),
                                     fontWeight: FontWeight.w300),
                               ),
                             )
@@ -104,41 +100,25 @@ class SignupScreen extends StatelessWidget {
                             topRight: Radius.circular(30))),
                     child: Column(
                       children: [
+                        SizedBox(height: contextHeight * 0.04),
+                        const Text("Ingresá tus datos...",
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w300,
+                                color: Color(0xFFDA637B))),
+                        SizedBox(height: contextHeight * 0.06),
+                        const CustomTextFormField(labelText: "Nombre"),
+                        SizedBox(height: contextHeight * 0.02),
+                        const CustomTextFormField(labelText: "Apellido"),
+                        SizedBox(height: contextHeight * 0.02),
+                        const CustomTextFormField(labelText: "Email"),
+                        SizedBox(height: contextHeight * 0.02),
+                        const CustomTextFormField(labelText: "Contraseña"),
                         SizedBox(height: contextHeight * 0.08),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Nombre",
-                          ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Nombre incorrecto";
-                            } else {
-                              return null;
-                            }
-                          },
-                        ),
-                        SizedBox(height: contextHeight * 0.02),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Apellido",
-                          ),
-                        ),
-                        SizedBox(height: contextHeight * 0.02),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Email",
-                          ),
-                        ),
-                        SizedBox(height: contextHeight * 0.02),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Contraseña",
-                          ),
-                        ),
-                        SizedBox(height: contextHeight * 0.03),
                         CustomOutlinedButton(
-                          text: "Confirmar",
-                          urlIcon: 'assets/icons/tick.png',
+                          text: "Crear cuenta",
+                          textColor: const Color.fromARGB(255, 255, 255, 255),
+                          urlIcon: 'tick.png',
                           isIcon: false,
                           width: 20,
                           height: 20,
@@ -146,20 +126,6 @@ class SignupScreen extends StatelessWidget {
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(builder: (context) {
                               return const HomeScreen();
-                            }), (route) => false);
-                          },
-                        ),
-                        CustomOutlinedButton(
-                          text: "Volver",
-                          urlIcon: 'assets/icons/tick.png',
-                          isIcon: false,
-                          width: 20,
-                          height: 20,
-                          backgroundColor: Colors.white,
-                          callback: () {
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(builder: (context) {
-                              return const LoginScreen();
                             }), (route) => false);
                           },
                         ),

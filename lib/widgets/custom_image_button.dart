@@ -7,6 +7,7 @@ class CustomImageButton extends StatelessWidget {
   final Color? iconColor;
   final double? height;
   final double? width;
+  final double? containerPadding;
 
   const CustomImageButton({
     super.key,
@@ -16,6 +17,7 @@ class CustomImageButton extends StatelessWidget {
     this.iconColor,
     this.height,
     this.width,
+    this.containerPadding,
   });
 
   @override
@@ -23,7 +25,7 @@ class CustomImageButton extends StatelessWidget {
     return GestureDetector(
       onTap: callback,
       child: Container(
-          padding: const EdgeInsets.all(7),
+          padding: EdgeInsets.all(containerPadding ?? 7),
           width: width ?? 35,
           height: height ?? 35,
           decoration: BoxDecoration(

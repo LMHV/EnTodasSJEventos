@@ -61,14 +61,11 @@ class CustomCategory extends StatelessWidget {
                           )),
                     ),
                     CustomImageButton(
-                      urlImage: 'right_arrow_chevron.png',
+                      urlImage: 'right_arrow.png',
+                      backgroundButtonColor: const Color(0xC8FFFFFF),
                       callback: () {
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                          builder: (context) {
-                            return const CategoryScreen(variable: "variable");
-                          },
-                        ), (route) => false);
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            '/category', (route) => false);
                       },
                     )
                   ]))

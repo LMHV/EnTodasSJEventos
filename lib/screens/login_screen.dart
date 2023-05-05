@@ -1,9 +1,8 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:practicando_flutter/widgets/custom.dart';
+import 'package:practicando_flutter/screens/signup_screen.dart';
 import 'package:practicando_flutter/widgets/custom_text_button.dart';
-
+import 'package:practicando_flutter/widgets/custom_textformfield.dart';
 import '../widgets/custom_image_button.dart';
 import '../widgets/custom_outlined_button.dart';
 import 'home_screen.dart';
@@ -20,7 +19,7 @@ class LoginScreen extends StatelessWidget {
       Image.asset('assets/images/background2.jpeg'),
       Scaffold(
         resizeToAvoidBottomInset: true,
-        backgroundColor: const Color.fromARGB(200, 191, 132, 132),
+        backgroundColor: Color.fromARGB(136, 182, 110, 110),
         body: SingleChildScrollView(
           child: SizedBox(
             height: contextHeight,
@@ -60,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                                 'Logeate',
                                 style: TextStyle(
                                   fontSize: 25,
-                                  color: Color.fromARGB(255, 91, 91, 91),
+                                  color: Color(0xFFFFFFFF),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -87,31 +86,26 @@ class LoginScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 70, vertical: 10),
                     decoration: const BoxDecoration(
-                        color: Color.fromARGB(240, 255, 255, 255),
+                        color: Color(0xFFFFFFFF),
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30))),
                     child: Column(
                       children: [
                         SizedBox(height: contextHeight * 0.08),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Email",
-                          ),
-                        ),
+                        const CustomTextFormField(labelText: "Email"),
                         SizedBox(height: contextHeight * 0.02),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Contraseña",
-                          ),
+                        const CustomTextFormField(labelText: "Contraseña"),
+                        const Align(
+                          alignment: Alignment.centerLeft,
+                          child: CustomTextButton(
+                              text: "He olvidado mi contraseña"),
                         ),
-                        SizedBox(height: contextHeight * 0.05),
-                        const CustomTextButton(
-                            text: "He olvidado mi contraseña"),
-                        SizedBox(height: contextHeight * 0.05),
+                        SizedBox(height: contextHeight * 0.03),
                         CustomOutlinedButton(
                           text: "Confirmar",
-                          urlIcon: 'assets/icons/tick.png',
+                          textColor: const Color(0xFFFFFFFF),
+                          urlIcon: 'tick.png',
                           isIcon: false,
                           width: 20,
                           height: 20,
@@ -122,9 +116,25 @@ class LoginScreen extends StatelessWidget {
                             }), (route) => false);
                           },
                         ),
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Divider(
+                              thickness: 1,
+                              endIndent: contextWidth * 0.4,
+                              indent: contextWidth * 0.02,
+                            ),
+                            const Text("or"),
+                            Divider(
+                              thickness: 1,
+                              indent: contextWidth * 0.4,
+                              endIndent: contextWidth * 0.02,
+                            ),
+                          ],
+                        ),
                         CustomOutlinedButton(
                           text: "Ingresar con Google",
-                          urlIcon: 'assets/icons/google.png',
+                          urlIcon: 'google.png',
                           isIcon: true,
                           width: 20,
                           height: 20,
@@ -138,7 +148,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         CustomOutlinedButton(
                           text: "Ingresar con Facebook",
-                          urlIcon: 'assets/icons/facebook.png',
+                          urlIcon: 'facebook.png',
                           isIcon: true,
                           width: 20,
                           height: 20,
@@ -147,6 +157,27 @@ class LoginScreen extends StatelessWidget {
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(builder: (context) {
                               return const HomeScreen();
+                            }), (route) => false);
+                          },
+                        ),
+                        SizedBox(height: contextHeight * 0.01),
+                        Divider(
+                          thickness: 1,
+                          endIndent: contextWidth * 0.02,
+                          indent: contextWidth * 0.02,
+                        ),
+                        SizedBox(height: contextHeight * 0.01),
+                        CustomOutlinedButton(
+                          text: "Crea tu cuenta",
+                          urlIcon: 'edit.png',
+                          isIcon: true,
+                          width: 20,
+                          height: 20,
+                          backgroundColor: Colors.white,
+                          callback: () {
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(builder: (context) {
+                              return const SignupScreen();
                             }), (route) => false);
                           },
                         ),
