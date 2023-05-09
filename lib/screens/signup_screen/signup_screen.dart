@@ -1,23 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:practicando_flutter/screens/home_screen.dart';
-import 'package:practicando_flutter/screens/login_screen.dart';
+import 'package:practicando_flutter/screens/login_screen/login_screen.dart';
+import 'package:practicando_flutter/screens/signup_screen/widgets/register_form.dart';
 import 'package:practicando_flutter/widgets/custom_image_button.dart';
-import 'package:practicando_flutter/widgets/custom_outlined_button.dart';
-import 'package:practicando_flutter/widgets/custom_textformfield.dart';
-
-//import 'package:practicando_flutter/widgets/custom_stepper.dart';
-//import 'package:practicando_flutter/widgets/custom_textfield.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
-  static final TextEditingController nameController = TextEditingController();
-  static final TextEditingController surnameController =
-      TextEditingController();
-  static final TextEditingController emailController = TextEditingController();
-  static final TextEditingController passwordController =
-      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -88,51 +77,8 @@ class SignupScreen extends StatelessWidget {
                     ),
                   ),
                 ]),
-                Expanded(
-                  child: Container(
-                    clipBehavior: Clip.hardEdge,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 70, vertical: 10),
-                    decoration: const BoxDecoration(
-                        color: Color.fromARGB(240, 255, 255, 255),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            topRight: Radius.circular(30))),
-                    child: Column(
-                      children: [
-                        SizedBox(height: contextHeight * 0.04),
-                        const Text("Ingresá tus datos...",
-                            style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w300,
-                                color: Color(0xFFDA637B))),
-                        SizedBox(height: contextHeight * 0.06),
-                        const CustomTextFormField(labelText: "Nombre"),
-                        SizedBox(height: contextHeight * 0.02),
-                        const CustomTextFormField(labelText: "Apellido"),
-                        SizedBox(height: contextHeight * 0.02),
-                        const CustomTextFormField(labelText: "Email"),
-                        SizedBox(height: contextHeight * 0.02),
-                        const CustomTextFormField(labelText: "Contraseña"),
-                        SizedBox(height: contextHeight * 0.08),
-                        CustomOutlinedButton(
-                          text: "Crear cuenta",
-                          textColor: const Color.fromARGB(255, 255, 255, 255),
-                          urlIcon: 'tick.png',
-                          isIcon: false,
-                          width: 20,
-                          height: 20,
-                          callback: () {
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(builder: (context) {
-                              return const HomeScreen();
-                            }), (route) => false);
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                RegisterForm(
+                    contextHeight: contextHeight, contextWidth: contextWidth)
               ],
             ),
           ),

@@ -1,7 +1,6 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:practicando_flutter/screens/signup_screen.dart';
+import 'package:practicando_flutter/screens/signup_screen/signup_screen.dart';
 import 'package:practicando_flutter/widgets/custom_image_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {

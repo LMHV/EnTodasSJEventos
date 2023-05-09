@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practicando_flutter/utils/database_calls/get_categories.dart';
 import 'package:practicando_flutter/widgets/custom_appbar.dart';
 import 'package:practicando_flutter/widgets/custom_bottom_appbar.dart';
 import 'package:practicando_flutter/widgets/custom_category.dart';
@@ -7,8 +8,21 @@ import 'package:practicando_flutter/widgets/custom_category.dart';
 //import 'package:practicando_flutter/widgets/custom_stepper.dart';
 //import '../widgets/custom_image_button.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  //final Document? categories;
+
+  @override
+  void initState() {
+    super.initState();
+    //categories = getCategories();
+  }
 
   @override
   Widget build(BuildContext context) {

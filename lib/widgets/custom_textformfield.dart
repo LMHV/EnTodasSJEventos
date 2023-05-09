@@ -2,15 +2,22 @@ import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String labelText;
+  final TextEditingController controller;
+  final Color? borderColor;
 
-  const CustomTextFormField({super.key, required this.labelText});
+  const CustomTextFormField(
+      {super.key,
+      required this.labelText,
+      required this.controller,
+      this.borderColor});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: const Color(0xFF969696),
-      cursorWidth: 1.2,
-      decoration: InputDecoration(
+        controller: controller,
+        cursorColor: const Color(0xFF969696),
+        cursorWidth: 1.2,
+        decoration: InputDecoration(
           labelText: labelText,
           floatingLabelBehavior: FloatingLabelBehavior.always,
           floatingLabelStyle: const TextStyle(
@@ -25,9 +32,13 @@ class CustomTextFormField extends StatelessWidget {
             gapPadding: 10,
           ),
           contentPadding: const EdgeInsets.symmetric(horizontal: 30),
-          border: const OutlineInputBorder(
-              gapPadding: 10,
-              borderRadius: BorderRadius.all(Radius.circular(50)))),
-    );
+          enabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(Radius.circular(50)),
+            borderSide: BorderSide(
+              color: borderColor ?? const Color.fromARGB(255, 150, 150, 150),
+            ),
+            gapPadding: 10,
+          ),
+        ));
   }
 }

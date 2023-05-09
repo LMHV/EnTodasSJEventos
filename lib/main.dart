@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:practicando_flutter/screens/category_screen.dart';
 import 'package:practicando_flutter/screens/home_screen.dart';
-import 'package:practicando_flutter/screens/login_screen.dart';
-import 'package:practicando_flutter/screens/signup_screen.dart';
-//import 'package:practicando_flutter/screens/home_screen.dart';
+import 'package:practicando_flutter/screens/login_screen/login_screen.dart';
+import 'package:practicando_flutter/screens/signup_screen/signup_screen.dart';
 
 void main() {
   runApp(const MyApp());
