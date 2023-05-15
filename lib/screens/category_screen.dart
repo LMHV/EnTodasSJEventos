@@ -1,20 +1,30 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:practicando_flutter/utils/database_calls/get_events.dart';
+import 'package:practicando_flutter/infrastructure/models/event_model.dart';
 import 'package:practicando_flutter/widgets/custom_bottom_appbar.dart';
+import 'package:practicando_flutter/widgets/custom_circular_progress_indicator.dart';
 import 'package:practicando_flutter/widgets/custom_event_card.dart';
 import 'package:practicando_flutter/widgets/custom_image_button.dart';
 import 'package:practicando_flutter/widgets/custom_textfield.dart';
 
 import 'home_screen.dart';
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
   const CategoryScreen({
     super.key,
   });
 
   @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> {
+  @override
   Widget build(BuildContext context) {
+    final String categoryTitle =
+        ModalRoute.of(context)?.settings.arguments as String;
     final double contextHeight = MediaQuery.of(context).size.height;
     final double contextWidth = MediaQuery.of(context).size.width;
     final TextEditingController searchController = TextEditingController();
@@ -54,12 +64,12 @@ class CategoryScreen extends StatelessWidget {
                         },
                       ),
                       Column(
-                        children: const [
+                        children: [
                           Align(
                             alignment: Alignment.bottomLeft,
                             child: Text(
-                              'Deportes',
-                              style: TextStyle(
+                              categoryTitle,
+                              style: const TextStyle(
                                 fontSize: 25,
                                 color: Color(0xFFFFFFFF),
                                 fontWeight: FontWeight.bold,
@@ -69,8 +79,8 @@ class CategoryScreen extends StatelessWidget {
                           Align(
                             alignment: Alignment.bottomLeft,
                             child: Text(
-                              "Todos los eventos de deportes en SJ",
-                              style: TextStyle(
+                              "Todos los eventos de $categoryTitle en SJ",
+                              style: const TextStyle(
                                   fontSize: 15,
                                   color: Color.fromARGB(255, 0, 0, 0),
                                   fontWeight: FontWeight.w300),
@@ -103,63 +113,36 @@ class CategoryScreen extends StatelessWidget {
                       const SizedBox(height: 20),
                       Expanded(
                         child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              CustomEventCard(
-                                cardHeight: contextHeight * 0.11,
-                                cardWidth: contextWidth,
-                                title: "San Martin / Sportivo",
-                                ticketPrice: 600,
-                                intEventState: 1,
-                                typeSport: 'Futbol',
-                                eventPlace: 'Estadio Bicentenario',
-                              ),
-                              CustomEventCard(
-                                cardHeight: contextHeight * 0.11,
-                                cardWidth: contextWidth,
-                                title: "Argentina / Brasil",
-                                ticketPrice: 250,
-                                intEventState: 2,
-                                typeSport: 'Hockey',
-                                eventPlace: 'Estadio Aldo Cantoni',
-                              ),
-                              CustomEventCard(
-                                cardHeight: contextHeight * 0.11,
-                                cardWidth: contextWidth,
-                                title: "Boca / River",
-                                ticketPrice: 200,
-                                intEventState: 3,
-                                typeSport: 'Basketball',
-                                eventPlace: 'Club Banco Hispano',
-                              ),
-                              CustomEventCard(
-                                cardHeight: contextHeight * 0.11,
-                                cardWidth: contextWidth,
-                                title: "Boca / River",
-                                ticketPrice: 200,
-                                intEventState: 3,
-                                typeSport: 'Basketball',
-                                eventPlace: 'Club Banco Hispano',
-                              ),
-                              CustomEventCard(
-                                cardHeight: contextHeight * 0.11,
-                                cardWidth: contextWidth,
-                                title: "Boca / River",
-                                ticketPrice: 200,
-                                intEventState: 3,
-                                typeSport: 'Basketball',
-                                eventPlace: 'Club Banco Hispano',
-                              ),
-                              CustomEventCard(
-                                cardHeight: contextHeight * 0.11,
-                                cardWidth: contextWidth,
-                                title: "Boca / River",
-                                ticketPrice: 200,
-                                intEventState: 3,
-                                typeSport: 'Basketball',
-                                eventPlace: 'Club Banco Hispano',
-                              ),
-                            ],
+                          child: FutureBuilder(
+                            future: getEvents(categoryTitle),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const Center(
+                                    child: CustomCircularProgressIndicator());
+                              } else if (snapshot.hasData) {
+                                return Container(
+                                  margin: const EdgeInsets.only(bottom: 40),
+                                  child: Column(
+                                    children: [
+                                      for (Event event
+                                          in snapshot.data.events) ...[
+                                        CustomEventCard(
+                                          title: event.title,
+                                          eventState: event.eventState,
+                                          type: event.type,
+                                          eventPlace: event.eventPlace,
+                                          ticketPrice: event.ticketPrice,
+                                          category: event.category,
+                                        )
+                                      ]
+                                    ],
+                                  ),
+                                );
+                              } else {
+                                return const Text('No event data');
+                              }
+                            },
                           ),
                         ),
                       ),

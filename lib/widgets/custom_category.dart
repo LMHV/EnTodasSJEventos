@@ -64,7 +64,8 @@ class CustomCategory extends StatelessWidget {
                       backgroundButtonColor: const Color(0xC8FFFFFF),
                       callback: () {
                         Navigator.of(context).pushNamedAndRemoveUntil(
-                            '/category', (route) => false);
+                            '/category', (route) => false,
+                            arguments: categoryTitle);
                       },
                     )
                   ]))

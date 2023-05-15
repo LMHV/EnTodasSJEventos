@@ -3,10 +3,8 @@ import 'package:practicando_flutter/utils/database_calls/get_categories.dart';
 import 'package:practicando_flutter/widgets/custom_appbar.dart';
 import 'package:practicando_flutter/widgets/custom_bottom_appbar.dart';
 import 'package:practicando_flutter/widgets/custom_category.dart';
-//import 'package:practicando_flutter/screens/signup_screen.dart';
-//import 'package:practicando_flutter/widgets/custom_button.dart';
-//import 'package:practicando_flutter/widgets/custom_stepper.dart';
-//import '../widgets/custom_image_button.dart';
+import 'package:practicando_flutter/infrastructure/models/category_model.dart';
+import 'package:practicando_flutter/widgets/custom_circular_progress_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,14 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //final Document? categories;
-
-  @override
-  void initState() {
-    super.initState();
-    //categories = getCategories();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,45 +22,34 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 30),
         child: Center(
-            child: Column(children: [
-          Container(
-            alignment: Alignment.topLeft,
-            margin: const EdgeInsets.only(left: 50, bottom: 20),
-            child: const Text("CATEGORIAS",
-                style: TextStyle(
-                  color: Color(0xFF343333),
-                  fontSize: 20,
-                )),
-          ),
-          const CustomCategory(
-            categoryTitle: "Deportes",
-            urlBackgroundImage: 'banner_sports.jpeg',
-          ),
-          const CustomCategory(
-            categoryTitle: "Gastronomía",
-            urlBackgroundImage: 'banner_gastronomy.jpeg',
-          ),
-          const CustomCategory(
-            categoryTitle: "Educacional",
-            urlBackgroundImage: 'banner_educational.jpeg',
-          ),
-          const CustomCategory(
-            categoryTitle: "Festival",
-            urlBackgroundImage: 'banner_festival.jpeg',
-          ),
-          const CustomCategory(
-            categoryTitle: "Investigación",
-            urlBackgroundImage: 'banner_research.jpeg',
-          ),
-          const CustomCategory(
-            categoryTitle: "Teatro",
-            urlBackgroundImage: 'banner_theatre.jpeg',
-          ),
-          const CustomCategory(
-            categoryTitle: "Otros",
-            urlBackgroundImage: 'background1.jpeg',
-          ),
-        ])),
+            child: FutureBuilder(
+          future: getCategories(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CustomCircularProgressIndicator());
+            } else if (snapshot.hasData) {
+              return Column(children: [
+                Container(
+                  alignment: Alignment.topLeft,
+                  margin: const EdgeInsets.only(left: 50, bottom: 20),
+                  child: const Text("CATEGORIAS",
+                      style: TextStyle(
+                        color: Color(0xFF343333),
+                        fontSize: 20,
+                      )),
+                ),
+                for (Category category in snapshot.data.categories) ...[
+                  CustomCategory(
+                    categoryTitle: category.name,
+                    urlBackgroundImage: category.urlImage,
+                  )
+                ]
+              ]);
+            } else {
+              return const Text('No data');
+            }
+          },
+        )),
       ),
     );
   }

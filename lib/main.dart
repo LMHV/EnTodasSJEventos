@@ -3,6 +3,7 @@ import 'package:practicando_flutter/screens/category_screen.dart';
 import 'package:practicando_flutter/screens/home_screen.dart';
 import 'package:practicando_flutter/screens/login_screen/login_screen.dart';
 import 'package:practicando_flutter/screens/signup_screen/signup_screen.dart';
+import 'package:practicando_flutter/screens/test_screen/test_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         "/": (context) => const HomeScreen(),
         "/login": (context) => const LoginScreen(),
         "/signup": (context) => const SignupScreen(),
-        "/category": (context) => CategoryScreen()
+        "/category": (context) => const CategoryScreen(),
+        "/test": (context) => const TestScreen()
       },
     );
   }

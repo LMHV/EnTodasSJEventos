@@ -4,27 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:practicando_flutter/widgets/custom_image_button.dart';
 
 class CustomEventCard extends StatefulWidget {
-  final double cardHeight;
-  final double cardWidth;
   final String title;
   final Array? dates;
   final Array? datetimes;
   final double? ticketPrice;
-  final int intEventState;
-  final String typeSport;
+  final int eventState;
+  final String type;
   final String eventPlace;
+  final String category;
 
   const CustomEventCard({
     super.key,
-    required this.cardHeight,
-    required this.cardWidth,
     required this.title,
     this.dates,
     this.ticketPrice,
-    required this.intEventState,
-    required this.typeSport,
+    required this.eventState,
+    required this.type,
     required this.eventPlace,
     this.datetimes,
+    required this.category,
   });
 
   @override
@@ -36,6 +34,9 @@ class _CustomEventCardState extends State<CustomEventCard> {
 
   @override
   Widget build(BuildContext context) {
+    final double cardHeight = MediaQuery.of(context).size.height * 0.11;
+    final double cardWidth = MediaQuery.of(context).size.width;
+
     return GestureDetector(
       onTap: () {
         _isActive = !_isActive;
@@ -48,8 +49,8 @@ class _CustomEventCardState extends State<CustomEventCard> {
           vertical: 15,
           horizontal: 25,
         ),
-        height: _isActive ? widget.cardHeight * 3 : widget.cardHeight,
-        width: widget.cardWidth,
+        height: _isActive ? cardHeight * 3 : cardHeight,
+        width: cardWidth,
         decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(25)),
             color: const Color(0xFFFFFFFF),
@@ -126,7 +127,7 @@ class _CustomEventCardState extends State<CustomEventCard> {
                     ],
                   ),
                   Text(
-                    widget.typeSport,
+                    widget.type,
                     style: const TextStyle(
                         color: Color.fromARGB(255, 150, 150, 150)),
                   )
@@ -136,7 +137,7 @@ class _CustomEventCardState extends State<CustomEventCard> {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   const Center(
                       child: Divider(
-                    color: Color.fromARGB(255, 214, 77, 136),
+                    color: Color.fromARGB(255, 199, 199, 199),
                     thickness: 0.8,
                     height: 20,
                   )),
@@ -145,7 +146,7 @@ class _CustomEventCardState extends State<CustomEventCard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'Valor p/ persona: ',
+                        'Precio p/ persona: ',
                         style: TextStyle(fontWeight: FontWeight.w600),
                       ),
                       Text('\$${widget.ticketPrice}'),
@@ -156,7 +157,7 @@ class _CustomEventCardState extends State<CustomEventCard> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
-                          'Lugar del evento: ',
+                          'Lugar: ',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
                         Text(widget.eventPlace)
@@ -170,21 +171,21 @@ class _CustomEventCardState extends State<CustomEventCard> {
   }
 
   _getColorFromState() {
-    if (widget.intEventState == 1) {
+    if (widget.eventState == 1) {
       return const Color.fromARGB(255, 124, 234, 110);
-    } else if (widget.intEventState == 2) {
+    } else if (widget.eventState == 2) {
       return const Color.fromARGB(255, 227, 116, 116);
-    } else if (widget.intEventState == 3) {
+    } else if (widget.eventState == 3) {
       return const Color.fromARGB(255, 108, 174, 255);
     }
   }
 
   String _getTextFromState() {
-    if (widget.intEventState == 1) {
+    if (widget.eventState == 1) {
       return 'Activo';
-    } else if (widget.intEventState == 2) {
+    } else if (widget.eventState == 2) {
       return 'Suspendido';
-    } else if (widget.intEventState == 3) {
+    } else if (widget.eventState == 3) {
       return 'En proceso';
     } else {
       return '';
