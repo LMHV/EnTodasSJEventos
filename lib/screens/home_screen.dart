@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
           future: getCategories(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CustomCircularProgressIndicator());
+              return const CustomCircularProgressIndicator();
             } else if (snapshot.hasData) {
               return Column(children: [
                 Container(

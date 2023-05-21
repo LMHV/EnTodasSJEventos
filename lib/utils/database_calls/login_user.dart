@@ -1,3 +1,4 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -23,7 +24,15 @@ Future<bool> loginUser(email, password) async {
         body: json.encode(userBody),
       );
 
-      return response.statusCode == 200 ? true : false;
+      if (response.statusCode == 200) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        final responseBody = json.decode(response.body);
+        await prefs.setString('token', responseBody['token']);
+
+        return true;
+      } else {
+        return false;
+      }
     } catch (e) {
       debugPrint(e.toString());
       return false;

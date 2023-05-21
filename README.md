@@ -1,18 +1,14 @@
-# practicando_flutter
+# Future Tasks
 
-A new Flutter project.
+- Create initScreen
+- Auth User / Login & Register
+- Find some nice font
+- Complete Signup Screen ?
+- Complete HomeScreen ?
+- Complete BottomNavBar functions
+- Complete all button functionalities
 
-## Getting Started
+# Possibilities
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-ARREGLAR SINGUP ABAJO
+- Show near events in HomeScreen ?
+- Dark Mode
