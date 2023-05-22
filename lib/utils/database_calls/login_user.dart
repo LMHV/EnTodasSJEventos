@@ -1,3 +1,5 @@
+import 'package:practicando_flutter/utils/validate_email.dart';
+import 'package:practicando_flutter/utils/validate_password.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -7,14 +9,17 @@ import 'dart:convert';
 final Uri uri = Uri.parse('http://10.0.2.2:3000/api/users/login/');
 
 Future<bool> loginUser(email, password) async {
+  if (!isEmailValid(email)) {
+    return false;
+  }
+  if (!isPasswordValid(password)) {
+    return false;
+  }
+
   Map<String, dynamic> userBody = {
     'email': email,
     'password': password,
   };
-
-  /*
-  user auth
-  */
 
   if (userBody['email'] != '' && userBody['password'] != '') {
     try {

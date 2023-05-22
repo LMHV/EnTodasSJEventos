@@ -1,5 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:practicando_flutter/screens/home_screen.dart';
+import 'package:practicando_flutter/screens/intro_screen.dart';
 import 'package:practicando_flutter/screens/signup_screen/signup_screen.dart';
 import 'package:practicando_flutter/widgets/custom_image_button.dart';
 
@@ -32,7 +34,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           callback: () {
             Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(builder: (context) {
-              return const SignupScreen();
+              return const IntroScreen();
             }), (route) => false);
           },
         ),

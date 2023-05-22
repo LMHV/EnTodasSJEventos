@@ -78,10 +78,8 @@ class _RegisterFormState extends State<RegisterForm> {
                     emailController.text,
                     passwordController.text);
                 isCreated
-                    ? Navigator.of(context).pushNamedAndRemoveUntil(
-                        // CAPAZ ESTO ROMPE TODO, ARREGLAR
-                        '/login',
-                        (route) => false)
+                    ? Navigator.of(context)
+                        .pushNamedAndRemoveUntil('/login', (route) => false)
                     : _alreadyExists = true;
                 setState(() {});
               },

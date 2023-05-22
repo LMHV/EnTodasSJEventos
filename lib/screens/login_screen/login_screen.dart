@@ -42,10 +42,8 @@ class LoginScreen extends StatelessWidget {
                           backgroundButtonColor: const Color(0x00FFFFFF),
                           iconColor: const Color(0xFFFFFFFF),
                           callback: () {
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(builder: (context) {
-                              return const HomeScreen();
-                            }), (route) => false);
+                            Navigator.of(context)
+                                .pushNamedAndRemoveUntil('/', (route) => false);
                           },
                         ),
                         Column(

@@ -77,7 +77,7 @@ class _LoginFormState extends State<LoginForm> {
                     emailController.text, passwordController.text);
                 isWrong
                     ? Navigator.of(context)
-                        .pushNamedAndRemoveUntil('/', (route) => false)
+                        .pushNamedAndRemoveUntil('/home', (route) => false)
                     : wrongUser = true;
                 setState(() {});
               },
@@ -106,10 +106,8 @@ class _LoginFormState extends State<LoginForm> {
               height: 20,
               backgroundColor: Colors.white,
               callback: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) {
-                  return const HomeScreen();
-                }), (route) => false);
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/home', (route) => false);
               },
             ),
             CustomOutlinedButton(
@@ -120,10 +118,8 @@ class _LoginFormState extends State<LoginForm> {
               height: 20,
               backgroundColor: Colors.white,
               callback: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) {
-                  return const HomeScreen();
-                }), (route) => false);
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/home', (route) => false);
               },
             ),
             SizedBox(height: widget.contextHeight * 0.01),

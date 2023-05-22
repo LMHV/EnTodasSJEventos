@@ -172,11 +172,11 @@ class _CustomEventCardState extends State<CustomEventCard> {
 
   _getColorFromState() {
     if (widget.eventState == 1) {
-      return const Color.fromARGB(255, 124, 234, 110);
+      return const Color(0xFF7CEA6E);
     } else if (widget.eventState == 2) {
-      return const Color.fromARGB(255, 227, 116, 116);
+      return const Color(0xFFE37474);
     } else if (widget.eventState == 3) {
-      return const Color.fromARGB(255, 108, 174, 255);
+      return const Color(0xFF6CAEFF);
     }
   }
 
