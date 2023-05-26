@@ -9,6 +9,7 @@ class CustomOutlinedButton extends StatelessWidget {
   final double? height;
   final Color? backgroundColor;
   final Color? textColor;
+  final bool isDisabled;
 
   const CustomOutlinedButton({
     super.key,
@@ -20,15 +21,18 @@ class CustomOutlinedButton extends StatelessWidget {
     this.height,
     this.backgroundColor,
     this.textColor,
+    this.isDisabled = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: callback,
+      onPressed: isDisabled ? null : callback,
       style: OutlinedButton.styleFrom(
         padding: const EdgeInsets.symmetric(vertical: 5),
-        backgroundColor: backgroundColor ?? const Color(0xFFDA637B),
+        backgroundColor: isDisabled
+            ? const Color(0xFFC8C8C8)
+            : backgroundColor ?? const Color(0xFFDA637B),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       ),
       child: Row(

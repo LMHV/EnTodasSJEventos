@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:practicando_flutter/api_constants.dart';
 import 'dart:async';
 import 'package:practicando_flutter/infrastructure/models/event_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,8 +10,8 @@ Future<dynamic> getEvents(category) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? token = prefs.getString('token');
 
-  final Uri uri = Uri.parse(
-      'http://10.0.2.2:3000/api/event/getbycategory?category=$category');
+  final Uri uri =
+      Uri.parse('${ApiConstants.getEventsByCategoryUrl}?category=$category');
 
   try {
     http.Response response =

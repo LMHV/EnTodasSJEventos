@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:practicando_flutter/screens/home_screen.dart';
 import 'package:practicando_flutter/screens/intro_screen.dart';
 import 'package:practicando_flutter/screens/signup_screen/signup_screen.dart';
-import 'package:practicando_flutter/widgets/custom_image_button.dart';
+import 'package:practicando_flutter/widgets/custom_icon_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -23,12 +23,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.white.withAlpha(200),
       title: const Text(
         "EnTodas SJ",
-        style: TextStyle(color: Color(0xFFDA637B)),
+        style: TextStyle(color: Color(0xFFDA637B), fontFamily: 'Doublebass'),
       ),
       leading: Container(
         margin: const EdgeInsets.only(left: 10),
-        child: CustomImageButton(
-          urlImage: 'back.png',
+        child: CustomIconButton(
+          urlIcon: 'back.png',
           backgroundButtonColor: const Color(0x00FFFFFF),
           iconColor: const Color(0xFFDA637B),
           callback: () {

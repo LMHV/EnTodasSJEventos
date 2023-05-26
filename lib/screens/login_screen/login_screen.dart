@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:practicando_flutter/screens/login_screen/widgets/login_form.dart';
-import '../../widgets/custom_image_button.dart';
+import '../../widgets/custom_icon_button.dart';
 import '../home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -37,8 +37,8 @@ class LoginScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomImageButton(
-                          urlImage: 'back.png',
+                        CustomIconButton(
+                          urlIcon: 'back.png',
                           backgroundButtonColor: const Color(0x00FFFFFF),
                           iconColor: const Color(0xFFFFFFFF),
                           callback: () {

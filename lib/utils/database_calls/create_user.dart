@@ -1,20 +1,11 @@
+import 'package:practicando_flutter/api_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:practicando_flutter/utils/validate_email.dart';
-import 'package:practicando_flutter/utils/validate_password.dart';
-
-final Uri uri = Uri.parse('http://10.0.2.2:3000/api/users/create/');
-
-Future<bool> createUser(name, surname, email, password) async {
-  if (!isEmailValid(email)) {
-    return false;
-  }
-  if (!isPasswordValid(password)) {
-    return false;
-  }
+Future<Map<String, dynamic>> createUser(name, surname, email, password) async {
+  final Uri uri = Uri.parse(ApiConstants.createUserUrl);
 
   Map<String, dynamic> userBody = {
     'name': name,
@@ -30,9 +21,16 @@ Future<bool> createUser(name, surname, email, password) async {
       body: json.encode(userBody),
     );
 
-    return response.statusCode == 200 ? true : false;
+    final data = jsonDecode(response.body);
+
+    Map<String, dynamic> responseData = {
+      'error': response.statusCode != 200,
+      'message': data['msg']
+    };
+
+    return responseData;
   } catch (e) {
     debugPrint(e.toString());
-    return false;
+    return {'error': true, 'message': 'Error creating user'};
   }
 }

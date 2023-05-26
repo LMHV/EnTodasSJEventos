@@ -1,12 +1,14 @@
 # Future Tasks
 
-- Create initScreen
-- Auth User / Login & Register
-- Find some nice font
-- Complete Signup Screen ?
+DONE! - Create initScreen.
+DONE! - Auth User / Login & Register
+DONE! - Find some nice font
+DONE! - Complete Signup Screen
+
 - Complete HomeScreen ?
 - Complete BottomNavBar functions
 - Complete all button functionalities
+- Finish 'He olvidado mi contraseña'
 
 # Possibilities
 

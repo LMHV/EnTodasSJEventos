@@ -6,7 +6,7 @@ import 'package:practicando_flutter/infrastructure/models/event_model.dart';
 import 'package:practicando_flutter/widgets/custom_bottom_appbar.dart';
 import 'package:practicando_flutter/widgets/custom_circular_progress_indicator.dart';
 import 'package:practicando_flutter/widgets/custom_event_card.dart';
-import 'package:practicando_flutter/widgets/custom_image_button.dart';
+import 'package:practicando_flutter/widgets/custom_icon_button.dart';
 import 'package:practicando_flutter/widgets/custom_textfield.dart';
 
 import 'home_screen.dart';
@@ -52,8 +52,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomImageButton(
-                        urlImage: 'back.png',
+                      CustomIconButton(
+                        urlIcon: 'back.png',
                         backgroundButtonColor: const Color(0x00FFFFFF),
                         iconColor: const Color(0xFFFFFFFF),
                         callback: () {

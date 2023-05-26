@@ -13,16 +13,27 @@ class IntroScreen extends StatelessWidget {
       body: Container(
         width: contextWidth,
         height: contextHeight,
-        decoration: const BoxDecoration(color: Color(0xFFC95F6F)),
+        decoration: const BoxDecoration(color: Color(0xFFF0F0F0)),
         child: Container(
-          padding: const EdgeInsets.all(50),
+          padding: const EdgeInsets.symmetric(horizontal: 75),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Container(
               margin: const EdgeInsets.symmetric(vertical: 50),
-              child: Image.asset(
-                './assets/icons/appicon.png',
-                width: contextWidth * 0.3,
-                color: const Color(0xFFFFFFFF),
+              child: Column(
+                children: [
+                  Image.asset(
+                    './assets/icons/appicon.png',
+                    width: contextWidth * 0.3,
+                    color: const Color(0xFFC95F6F),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text("EnTodas SJ",
+                      style: TextStyle(
+                          fontFamily: 'Doublebass',
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 0, 0, 0))),
+                ],
               ),
             ),
             CustomOutlinedButton(

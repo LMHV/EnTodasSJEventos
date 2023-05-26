@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:practicando_flutter/widgets/custom_image_button.dart';
+import 'package:practicando_flutter/widgets/custom_icon_button.dart';
 
 class CustomEventCard extends StatefulWidget {
   final String title;
@@ -88,16 +88,16 @@ class _CustomEventCardState extends State<CustomEventCard> {
                     ),
                   ),
                   _isActive
-                      ? const CustomImageButton(
-                          urlImage: 'top_arrow.png',
+                      ? const CustomIconButton(
+                          urlIcon: 'top_arrow.png',
                           height: 12,
                           width: 12,
                           backgroundButtonColor: Color(0x00FFFFFF),
                           iconColor: Color.fromARGB(255, 0, 0, 0),
                           containerPadding: 0,
                         )
-                      : const CustomImageButton(
-                          urlImage: 'down_arrow.png',
+                      : const CustomIconButton(
+                          urlIcon: 'down_arrow.png',
                           height: 12,
                           width: 12,
                           backgroundButtonColor: Color(0x00FFFFFF),
@@ -112,8 +112,8 @@ class _CustomEventCardState extends State<CustomEventCard> {
                 children: [
                   Row(
                     children: [
-                      CustomImageButton(
-                        urlImage: 'dot.png',
+                      CustomIconButton(
+                        urlIcon: 'dot.png',
                         height: 12,
                         width: 12,
                         iconColor: _getColorFromState(),

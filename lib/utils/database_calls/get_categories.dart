@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:practicando_flutter/api_constants.dart';
 import 'dart:async';
 import 'package:practicando_flutter/infrastructure/models/category_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,7 +10,7 @@ Future<dynamic> getCategories() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? token = prefs.getString('token');
 
-  final Uri uri = Uri.parse('http://10.0.2.2:3000/api/categories/getAll');
+  final Uri uri = Uri.parse(ApiConstants.getAllcategoriesUrl);
 
   try {
     http.Response response =

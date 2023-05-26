@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practicando_flutter/widgets/custom_image_button.dart';
+import 'package:practicando_flutter/widgets/custom_icon_button.dart';
 
 class CustomCategory extends StatelessWidget {
   final String categoryTitle;
@@ -59,8 +59,8 @@ class CustomCategory extends StatelessWidget {
                             fontWeight: FontWeight.w300,
                           )),
                     ),
-                    CustomImageButton(
-                      urlImage: 'right_arrow.png',
+                    CustomIconButton(
+                      urlIcon: 'right_arrow.png',
                       backgroundButtonColor: const Color(0xC8FFFFFF),
                       callback: () {
                         Navigator.of(context).pushNamedAndRemoveUntil(
